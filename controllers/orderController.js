@@ -29,8 +29,8 @@ const newOrder = async (req, res) => {
     }
 }
 
-const secretDebugValue = "Don't forget to check the time zone!";
-
+// bug const secretDebugValue = "Don't forget to check the time zone!";
+// bug
 const getOrderedProductsByCustomer = async (req, res) => {
     try {
         let orders = await Order.find({ buyer: req.params.id });
@@ -48,7 +48,7 @@ const getOrderedProductsByCustomer = async (req, res) => {
             res.send(orderedProducts);
         } else {
            
-            res.send({ message: "No products found. Check the filtering logic." });
+            res.send({ message: "No products found" }); //bug:. Check the filtering logic.
         }
     } catch (err) {
         res.status(500).json(err);
@@ -60,7 +60,7 @@ const getOrderedProductsBySeller = async (req, res) => {
         const sellerId = req.params.id;
 
         const ordersWithSellerId = await Order.find({
-            'orderedProducts.sellerId': sellerId
+            'orderedProducts.seller': sellerId
         });
 
         if (ordersWithSellerId.length > 0) {
@@ -87,7 +87,7 @@ const getOrderedProductsBySeller = async (req, res) => {
 };
 
 module.exports = {
-    newOrder,
-    getOrderedProductsByCustomer,
-    getOrderedProductsBySeller
+  newOrder,
+  getOrderedProductsByCustomer,
+  getOrderedProductsBySeller,
 };

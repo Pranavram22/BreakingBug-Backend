@@ -4,13 +4,15 @@ const authMiddleware = require('../middleware/authMiddleware.js');
 const {
   sellerRegister,
   sellerLogIn,
-} = require("../controllers/orderController.js");
+} = require("../controllers/sellerController.js");
 
 const {
   productCreate,
   getProducts,
   getProductDetail,
+  searchProduct, //bug
   searchProductbyCategory,
+  searchProductbySubCategory, //bug
   getSellerProducts,
   updateProduct,
   deleteProduct,
@@ -50,9 +52,9 @@ router.get("/getAddedToCartProducts/:id", getAddedToCartProducts);
 router.put("/ProductUpdate/:id", updateProduct);
 router.put("/addReview/:id", addReview);
 
-router.get("/searchProduct/:key", searchProductbyCategory);
+router.get("/searchProduct/:key", searchProduct); //bug
 router.get("/searchProductbyCategory/:key", searchProductbyCategory);
-router.get("/searchProductbySubCategory/:key", searchProductbyCategory);
+router.get("/searchProductbySubCategory/:key", searchProductbySubCategory);
 
 router.delete("/DeleteProduct/:id", deleteProduct);
 router.delete("/DeleteProducts/:id", deleteProducts);
